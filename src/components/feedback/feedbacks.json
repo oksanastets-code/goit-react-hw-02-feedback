@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "type": "good",
+        "number": 0
+    },
+    {
+        "id": 2,
+        "type": "neutral",
+        "number": 0
+    },
+    {
+        "id": 3,
+        "type": "bad",
+        "number": 0
+    }
+]
