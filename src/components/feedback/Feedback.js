@@ -20,12 +20,14 @@ class Feedback extends Component {
   };
 
   render() {
-    const countTotalFeedback = Object.values(this.state).reduce(
-      (acc, option) => acc + option,
-      0,
-    );
-    console.log(countTotalFeedback);
-
+    const voices = Object.values(this.state);
+    console.log(voices);
+    const countTotalFeedback = voices.reduce((acc, number) => acc + number, 0);
+    const numberOfGoodFeedbacks = voices[0];
+    const countPositiveFeedbackPercentage = (
+      (numberOfGoodFeedbacks / countTotalFeedback) *
+      100
+    ).toFixed(0);
     return (
       <>
         <div>
@@ -36,7 +38,7 @@ class Feedback extends Component {
           <h2>Statistics</h2>
           <CountFeedback options={this.state} />
           <p>Total: {countTotalFeedback}</p>
-          <p>Positive feedback: %</p>
+          <p>Positive feedback: {countPositiveFeedbackPercentage} %</p>
         </div>
       </>
     );
