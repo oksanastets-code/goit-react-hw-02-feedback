@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import FeedbackOptions from './components/FeedbackOptions';
 import Statistics from './components/Statistics';
+import Section from './components/Section';
 
 // import Feedback from './components/feedback/Feedback';
 
@@ -30,21 +31,20 @@ class App extends Component {
 
     return (
       <>
-        <div>
-          <h3>Please leave feedback</h3>
+        <Section title="Please leave feedback">
           <FeedbackOptions
             options={this.state}
             onIncrement={this.onLeaveFeedback}
           />
-        </div>
-        <div>
-          <h2>Statistics</h2>
+        </Section>
+
+        <Section title="Statistics">
           <Statistics
             options={this.state}
             total={countTotalFeedback}
             positivePercentage={countPositiveFeedbackPercentage}
           />
-        </div>
+        </Section>
       </>
     );
   }

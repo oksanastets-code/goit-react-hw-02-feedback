@@ -17,5 +17,5 @@ export default function Statistics({ options, total, positivePercentage }) {
 Statistics.propTypes = {
   options: PropTypes.object,
   total: PropTypes.number,
-  positivePercentage: PropTypes.number,
+  positivePercentage: PropTypes.string,
 };
