@@ -20,17 +20,22 @@ class Feedback extends Component {
   };
 
   render() {
+    const countTotalFeedback = Object.values(this.state).reduce(
+      (acc, option) => acc + option,
+      0,
+    );
+    console.log(countTotalFeedback);
+
     return (
       <>
         <div>
           <h3>Please leave feedback</h3>
-
           <ControlItem options={this.state} onIncrement={this.handle} />
         </div>
         <div>
           <h2>Statistics</h2>
           <CountFeedback options={this.state} />
-          <p>Total:</p>
+          <p>Total: {countTotalFeedback}</p>
           <p>Positive feedback: %</p>
         </div>
       </>
