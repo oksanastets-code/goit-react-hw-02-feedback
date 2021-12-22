@@ -1,34 +1,23 @@
-// {
-//
-//         "type": "good"
-//     }
+import PropTypes from 'prop-types';
+import { Button } from './Controls.styled';
+
 export default function ControlItem({ options, onIncrement }) {
-  // return (
-  //   <>
-  //     {buttons.map(button => (
-  //       <button
-  //         key={button.type}
-  //         type="button"
-  //         onClick={() => onIncrement(button.type)}
-  //         style={{ textTransform: 'capitalize' }}
-  //       >
-  //         {button.type}
-  //       </button>
-  //     ))}
-  //   </>
-  // );
   return (
     <>
       {Object.keys(options).map(option => (
-        <button
+        <Button
           key={option}
           type="button"
           onClick={() => onIncrement(option)}
           style={{ textTransform: 'capitalize' }}
         >
           {option}
-        </button>
+        </Button>
       ))}
     </>
   );
 }
+ControlItem.propTypes = {
+  options: PropTypes.object,
+  onIncrement: PropTypes.func,
+};

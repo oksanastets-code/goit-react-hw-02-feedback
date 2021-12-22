@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import ControlItem from './Controls';
 import CountFeedback from './FeedbackNumbers';
+
 // import PropTypes from 'prop-types';
 // import {} from './Feedback.styled';
 

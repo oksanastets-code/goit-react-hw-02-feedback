@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export default function CountFeedback({ options }) {
   return (
     <>
@@ -9,3 +11,6 @@ export default function CountFeedback({ options }) {
     </>
   );
 }
+CountFeedback.propTypes = {
+  options: PropTypes.object,
+};
