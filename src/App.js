@@ -17,13 +17,15 @@ class App extends Component {
       [feedbackId]: prevState[feedbackId] + 1,
     }));
   };
-  //  voices = Object.values(state);
-  // countTotalFeedback = state => {
-  //   const voices = Object.values(state);
-  //   const TotalFeedback = voices.reduce((acc, number) => acc + number, 0);
-  //   console.log(TotalFeedback);
-  //   return TotalFeedback;
-  // };
+
+  countTotalFeedback = () => {
+    const TotalFeedback = Object.values(this.state).reduce(
+      (acc, number) => acc + number,
+      0,
+    );
+    return TotalFeedback;
+  };
+
   // countPositiveFeedbackPercentage = (state, countTotalFeedback) => {
   //   const PositiveFeedbackPercentage = (
   //     (Object.values(state)[0] / countTotalFeedback) *
@@ -32,28 +34,29 @@ class App extends Component {
   //   return PositiveFeedbackPercentage;
   // };
   render() {
+    const arrayOfKeys = Object.keys(this.state);
     const voices = Object.values(this.state);
-    const countTotalFeedback = voices.reduce((acc, number) => acc + number, 0);
+    const TotalFeedback = this.countTotalFeedback();
 
     const numberOfPositiveFeedbacks = voices[0];
     const countPositiveFeedbackPercentage = (
-      (numberOfPositiveFeedbacks / countTotalFeedback) *
+      (numberOfPositiveFeedbacks / TotalFeedback) *
       100
     ).toFixed(0);
     return (
       <>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={this.state}
+            options={arrayOfKeys}
             onIncrement={this.onLeaveFeedback}
           />
         </Section>
 
         <Section title="Statistics">
-          {countTotalFeedback ? (
+          {TotalFeedback ? (
             <Statistics
               options={this.state}
-              total={countTotalFeedback}
+              total={TotalFeedback}
               positivePercentage={countPositiveFeedbackPercentage}
             />
           ) : (

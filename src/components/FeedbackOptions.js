@@ -4,7 +4,7 @@ import { Button } from './FeedbackOptions.styled';
 export default function FeedbackOptions({ options, onIncrement }) {
   return (
     <>
-      {Object.keys(options).map(option => (
+      {options.map(option => (
         <Button
           key={option}
           type="button"
@@ -18,6 +18,6 @@ export default function FeedbackOptions({ options, onIncrement }) {
   );
 }
 FeedbackOptions.propTypes = {
-  options: PropTypes.object,
+  options: PropTypes.array,
   onIncrement: PropTypes.func,
 };
