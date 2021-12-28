@@ -11,7 +11,6 @@ class App extends Component {
     bad: 0,
   };
 
-  // Public method
   onLeaveFeedback = feedbackId => {
     this.setState(prevState => ({
       [feedbackId]: prevState[feedbackId] + 1,
@@ -26,23 +25,19 @@ class App extends Component {
     return TotalFeedback;
   };
 
-  // countPositiveFeedbackPercentage = (state, countTotalFeedback) => {
-  //   const PositiveFeedbackPercentage = (
-  //     (Object.values(state)[0] / countTotalFeedback) *
-  //     100
-  //   ).toFixed(0);
-  //   return PositiveFeedbackPercentage;
-  // };
-  render() {
-    const arrayOfKeys = Object.keys(this.state);
+  countPositiveFeedbackPercentage = () => {
     const voices = Object.values(this.state);
-    const TotalFeedback = this.countTotalFeedback();
-
-    const numberOfPositiveFeedbacks = voices[0];
-    const countPositiveFeedbackPercentage = (
-      (numberOfPositiveFeedbacks / TotalFeedback) *
+    const PositiveFeedbackPercentage = (
+      (voices[0] / this.countTotalFeedback()) *
       100
     ).toFixed(0);
+    return PositiveFeedbackPercentage;
+  };
+
+  render() {
+    const arrayOfKeys = Object.keys(this.state);
+    const TotalFeedback = this.countTotalFeedback();
+    const PositiveFeedbackPercentage = this.countPositiveFeedbackPercentage();
     return (
       <>
         <Section title="Please leave feedback">
@@ -57,7 +52,7 @@ class App extends Component {
             <Statistics
               options={this.state}
               total={TotalFeedback}
-              positivePercentage={countPositiveFeedbackPercentage}
+              positivePercentage={PositiveFeedbackPercentage}
             />
           ) : (
             <Notification />
@@ -67,5 +62,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
